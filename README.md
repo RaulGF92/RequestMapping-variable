@@ -26,3 +26,6 @@ a example of a override method, in the case that your class don't implement a me
           // Do my stuff
           return new ResponseEntity<Object>("OK",HttpStatus.OK);
         }
+
+# Combine with a normal REST application
+You can use if you like this solution in a normal REST application. Like show you in the class EspecificController class, the Spring REST engine make more priority to estatic mapping than generic mapping like the GeneralController. You can define any RESTController in the mapping you like and the engine send you first to the RestController define.
