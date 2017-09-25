@@ -36,6 +36,6 @@ public class PathPetitions {
 	}
 	
 	public PersonalizedController getController(String key) {
-		return this.getController(key);
+		return this.petitions.get(key);
 	}
 }

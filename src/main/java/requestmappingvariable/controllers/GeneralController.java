@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.support.ManagedArray;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,11 @@ public class GeneralController {
 		String petition = request.getRequestURI();
 		String method = request.getMethod();
 		
-		return petitions.getController(petition).makePetition(method,new String());
+		PersonalizedController controller = petitions.getController(petition);
+		
+		if(controller == null)
+			return new ResponseEntity<Object>("",HttpStatus.NOT_FOUND);
+		
+		return controller.makePetition(method,new String());
 	}
 }
